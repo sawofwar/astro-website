@@ -1,4 +1,18 @@
 ---
+const pageTitle = "About Me";
+
+const identity = {
+  firstName: "Constantine",
+  country: "Georgia",
+  occupation: "Frontend Developer",
+  hobbies: ["Writing", "Languages", "Music"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "Astro"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="en">
@@ -7,23 +21,40 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>{pageTitle}</title>
   </head>
   <body>
     <a href="/">Home</a>
     <a href="/about/">About</a>
     <a href="/blog/">Blog</a>
 
-    <h1>About Me</h1>
-    <h2>
-      My name is Constantine and I am an aspiring frontend developer. I work
-      with JavaScript, HTML, & CSS. This is my new Astro site!
-    </h2>
+    <h1>{pageTitle}</h1>
+    <p>
+      My name is {identity.firstName} and I am an aspiring {
+        identity.occupation
+      }. I work with {skills.join(", ")}. This is my new Astro site!
+    </p>
+
+    <!-- ⭐⭐⭐ Conditional rendering! -->
+    {happy && <p>I am happy to be learning Astro!</p>}
+    {finished && <p>I finished this tutorial!</p>}
+    {
+      goal === 3 ? (
+        <p>My goal is to finish in 3 days.</p>
+      ) : (
+        <p>My goal is not to finish in 3 days.</p>
+      )
+    }
 
     <p>
       I am working through Astro's introductory tutorial. This is the second
       page on my website, and it's the first one I built myself!
     </p>
+
+    <p>Here are my hobbies:</p>
+    <ul>
+      {identity.hobbies.map((hobby) => <li>{hobby}</li>)}
+    </ul>
 
     <p>
       This site will update as I complete more of the tutorial, so keep checking
