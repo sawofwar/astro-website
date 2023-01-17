@@ -1,0 +1,37 @@
+---
+import Social from "./Social.astro";
+
+// const platforms = ["GitHub", "LinkedIn"];
+// // const username = "sawofwar";
+// const usernames = {
+//   github: "sawofwar",
+//   linkedin: "konstantin-frolov-71009b195",
+// };
+---
+
+<footer>
+  <!-- <p> -->
+  <!-- ⭐⭐⭐ template literal -->
+  <!-- Learn more about my projects on <a
+      href={`https://www.${platforms[0]}.com/${usernames.github}`}
+      >{platforms[0]}</a
+    >!
+  </p>
+  <p>
+    You can also follow me on <a
+      href={`https://www.linkedin.com/in/${usernames.linkedin}/`}
+      >{platforms[1]}</a
+    >.
+  </p> -->
+  <!-- </p> -->
+  <Social platform="GitHub" username="sawofwar" />
+  <Social platform="LinkedIn" username="/in/konstantin-frolov-71009b195/" />
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>
