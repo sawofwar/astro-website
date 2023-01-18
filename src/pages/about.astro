@@ -1,6 +1,5 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 
 const pageTitle = "About Me";
@@ -33,11 +32,6 @@ const textCase = "uppercase";
     <title>{pageTitle}</title>
     <!-- ⭐⭐⭐ adding astro's tag -->
     <style define:vars={{ skillColor, fontWeight, textCase }}>
-      h1 {
-        color: purple;
-        font-size: 4rem;
-      }
-
       .hobby {
         color: var(--skillColor);
         font-weight: var(--fontWeight);
@@ -46,40 +40,40 @@ const textCase = "uppercase";
     </style>
   </head>
   <body>
-    <Header />
+    <!-- <Header /> -->
+    <BaseLayout pageTitle={pageTitle}>
+      <p>
+        My name is {identity.firstName} and I am an aspiring {
+          identity.occupation
+        }. I work with {skills.join(", ")}. This is my new Astro site!
+      </p>
 
-    <h1>{pageTitle}</h1>
-    <p>
-      My name is {identity.firstName} and I am an aspiring {
-        identity.occupation
-      }. I work with {skills.join(", ")}. This is my new Astro site!
-    </p>
+      <!-- ⭐⭐⭐ Conditional rendering! -->
+      {happy && <p>I am happy to be learning Astro!</p>}
+      {finished && <p>I finished this tutorial!</p>}
+      {
+        goal === 3 ? (
+          <p>My goal is to finish in 3 days.</p>
+        ) : (
+          <p>My goal is not to finish in 3 days.</p>
+        )
+      }
 
-    <!-- ⭐⭐⭐ Conditional rendering! -->
-    {happy && <p>I am happy to be learning Astro!</p>}
-    {finished && <p>I finished this tutorial!</p>}
-    {
-      goal === 3 ? (
-        <p>My goal is to finish in 3 days.</p>
-      ) : (
-        <p>My goal is not to finish in 3 days.</p>
-      )
-    }
+      <p>
+        I am working through Astro's introductory tutorial. This is the second
+        page on my website, and it's the first one I built myself!
+      </p>
 
-    <p>
-      I am working through Astro's introductory tutorial. This is the second
-      page on my website, and it's the first one I built myself!
-    </p>
+      <p>Here are my hobbies:</p>
+      <ul>
+        {identity.hobbies.map((hobby) => <li class="hobby">{hobby}</li>)}
+      </ul>
 
-    <p>Here are my hobbies:</p>
-    <ul>
-      {identity.hobbies.map((hobby) => <li class="hobby">{hobby}</li>)}
-    </ul>
-
-    <p>
-      This site will update as I complete more of the tutorial, so keep checking
-      back and see how my journey is going!
-    </p>
-    <Footer />
+      <p>
+        This site will update as I complete more of the tutorial, so keep
+        checking back and see how my journey is going!
+      </p>
+      <!-- <Footer /> -->
+    </BaseLayout>
   </body>
 </html>

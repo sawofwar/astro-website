@@ -1,0 +1,24 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const { frontmatter } = Astro.props;
+
+// ⭐ we took the baselayout layout, which includes the header and footer, and wrapped the MARKDOWNPOST layout (this file) in it
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+  <p>Written by: {frontmatter.author}</p>
+  <p><em>{frontmatter.description}</em></p>
+
+  <img src={frontmatter.image.url} width="300" alt={frontmatter.image} />
+
+  <slot />
+
+  <p>Published on: {frontmatter.pubDate.slice(0, 10)}</p>
+  <p class="post-number"></p>
+</BaseLayout>
+
+<script>
+  const postNumber = window.location.pathname.slice(-2).replace("-", "");
+  document.querySelector(".post-number").innerHTML = `Post ${postNumber}`;
+</script>
