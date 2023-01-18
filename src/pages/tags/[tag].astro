@@ -1,0 +1,74 @@
+---
+import BlogPost from "../../components/BlogPost.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// ⭐⭐⭐ The getStaticPaths function returns an array of page routes, and all of the pages at those routes will use the same template defined in the file.
+
+// ⭐⭐⭐ Make sure that every blog post contains at least one tag, written as an array, e.g. tags: ["blogging"].
+
+// Because all routes must be determined at build time, a dynamic route must export a getStaticPaths() that returns an array of objects with a params property. Each of these objects will generate a corresponding route.
+
+// [dog].astro defines the dynamic dog parameter in its filename, so the objects returned by getStaticPaths() must include dog in their params. The page can then access this parameter using Astro.params.
+
+// NOW i'll try to figure out what's happening
+// so we just use this function with "export async" for some reason
+export async function getStaticPaths() {
+  // here we select all posts from the folder
+  const allPosts = await Astro.glob("../posts/*.md");
+
+  // array of existing tags
+  const uniqueTags = [
+    // ⭐⭐⭐ some "flat" method
+    ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
+  ];
+
+  //the destructuring syntax would imply that posts are renamed to allPosts
+  // i don't understand why
+  //   return [
+  //     // this will determine the dynamic routes: what is included at /tags/{tag}
+  //     { params: { tag: "astro" }, props: { posts: allPosts } },
+  //     { params: { tag: "successes" }, props: { posts: allPosts } },
+  //     { params: { tag: "community" }, props: { posts: allPosts } },
+  //     { params: { tag: "blogging" }, props: { posts: allPosts } },
+  //     { params: { tag: "setbacks" }, props: { posts: allPosts } },
+  //     { params: { tag: "learning in public" }, props: { posts: allPosts } },
+  //   ];
+  // }
+
+  // ⭐⭐⭐ Be sure to give each route in your array the new props, and then make those props available to your component template outside of your function.
+
+  // ⭐⭐⭐⭐⭐⭐⭐ The received values of props and params to be used in the HTML template.
+
+  // ⭐⭐⭐ A getStaticPaths function should always return a list of objects containing params (what to call each page route) and optionally any props (data that you want to pass to those pages). Earlier, you defined each tag name that you knew was used in your blog and passed the entire list of posts as props to each page.
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.frontmatter.tags.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+      // ⭐⭐⭐ the posts (which comes from "filteredPosts" is passed down and we can use it in the component through destructuring from Astro.props)
+    };
+  });
+}
+
+const { tag } = Astro.params;
+// ⭐⭐⭐ not sure, but this might mean that "posts" comes from the directory name "posts"
+const { posts } = Astro.props;
+
+// ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
+// If you need information to construct the page routes, write it inside getStaticPaths().
+
+// To receive information in the HTML template of a page route, write it outside getStaticPaths().
+---
+
+<BaseLayout pageTitle={tag}>
+  <p>Posts tagged with {tag}</p>
+  <ul>
+    {
+      posts.map((post) => (
+        <BlogPost url={post.url} title={post.frontmatter.title} />
+      ))
+    }
+  </ul>
+</BaseLayout>

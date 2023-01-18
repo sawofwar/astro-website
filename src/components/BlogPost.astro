@@ -1,0 +1,11 @@
+---
+const { url, title } = Astro.props;
+// ⭐⭐⭐ we destructure "url" and "title" from Astro.props
+// the values of those variables are defined by classes in the components where we use BlogPost.astro
+// e.g. {allPosts.map((post) => (<BlogPost url={post.url} title={post.frontmatter.title} />))}
+// here for "url" we use {post.url}, which comes from allPosts being mapped with the function that takes the parameter post
+---
+
+<li>
+  <a href={url}>{title}</a>
+</li>
