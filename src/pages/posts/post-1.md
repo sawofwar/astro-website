@@ -2,10 +2,10 @@
 # ⭐⭐⭐
 layout: ../../layouts/MarkdownPostLayout.astro
 
-title: "My First Blog Post"
+title: "My first blog post"
 pubDate: 2023-01-17
 description: "This is the first post of my new Astro blog."
-author: "sawofwarxx"
+author: "sawofwar"
 image:
   url: "https://astro.build/assets/blog/astro-1-release-update/cover.jpeg"
   alt: "The Astro logo with the word One."

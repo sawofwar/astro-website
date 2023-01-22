@@ -30,12 +30,13 @@ const textCase = "uppercase";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
-    <!-- ⭐⭐⭐ adding astro's tag -->
+
     <style define:vars={{ skillColor, fontWeight, textCase }}>
-      .hobby {
+      .hobby,
+      .update {
         color: var(--skillColor);
-        font-weight: var(--fontWeight);
-        text-transform: var(--textCase);
+        /* font-weight: var(--fontWeight); */
+        /* text-transform: var(--textCase); */
       }
     </style>
   </head>
@@ -45,19 +46,17 @@ const textCase = "uppercase";
       <p>
         My name is {identity.firstName} and I am an aspiring {
           identity.occupation
-        }. I work with {skills.join(", ")}. This is my new Astro site!
+        }. I work with {skills.join(", ")}. And this is my new Astro site!
       </p>
 
-      <!-- ⭐⭐⭐ Conditional rendering! -->
-      {happy && <p>I am happy to be learning Astro!</p>}
-      {finished && <p>I finished this tutorial!</p>}
-      {
+      <!-- {happy && <p>Happy to be learning Astro!</p>} -->
+      <!-- {
         goal === 3 ? (
           <p>My goal is to finish in 3 days.</p>
         ) : (
           <p>My goal is not to finish in 3 days.</p>
         )
-      }
+      } -->
 
       <p>
         I am working through Astro's introductory tutorial. This is the second
@@ -73,6 +72,9 @@ const textCase = "uppercase";
         This site will update as I complete more of the tutorial, so keep
         checking back and see how my journey is going!
       </p>
+
+      {finished && <p class="update">UPDATE: I finished this tutorial!</p>}
+
       <!-- <Footer /> -->
     </BaseLayout>
   </body>

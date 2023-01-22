@@ -1,11 +1,8 @@
 ---
-// we use layout components to render the common page elements such as header and footer
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-// we imported styles, so we don't have to include them in the pages where we use the layout
 import "../styles/global.css";
 
-// ⭐⭐⭐ layout component will receive title via the global Astro.props
 const { pageTitle } = Astro.props;
 ---
 
@@ -23,12 +20,11 @@ const { pageTitle } = Astro.props;
     <h1>{pageTitle}</h1>
   </body>
 
-  <!-- ⭐⭐⭐ slot for wrapping content -->
   <slot />
 
   <Footer />
 
   <script>
-    import "../scripts/menu.js";
+    import "../pages/scripts/menu.js";
   </script>
 </html>
