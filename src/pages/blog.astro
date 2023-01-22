@@ -9,6 +9,7 @@ const allPosts = await Astro.glob("../pages/posts/*.md");
 // ⭐⭐⭐ to generate the entire list dynamically, we replace the <li> elements with the .map code
 
 const pageTitle = "My Astro Learning Blog";
+const linkColor = Astro.props;
 ---
 
 <html lang="en">
