@@ -24,3 +24,7 @@ I find taking my mind off programming hard, always thinking about it: all the ex
 Over the past few days I have been working on a new version of my main website but this time built with Astro. The components help a lot in the process because in the past I would do the same thing — building reusable components and importing them into pages — but with vanilla JavaScript. Now life has become so much easier!
 
 A great few days for learning!
+
+### Short update
+
+I updated some of the styles, which were originally provided by the tutorial. The original ones were nice, but I would like the website to look a bit more complete and modern. I will be updating it further in the coming weeks.
