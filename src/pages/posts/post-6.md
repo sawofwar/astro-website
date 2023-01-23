@@ -8,6 +8,6 @@ author: "sawofwar"
 tags: ["astro", "testing"]
 ---
 
-## I am testing the website
+## Testing the website
 
 I am testing the dynamic functionality of the website. This short note is to make sure that the new posts are updated automatically.
