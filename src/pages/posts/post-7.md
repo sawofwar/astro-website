@@ -15,9 +15,9 @@ tags: ["python", "oop", "node", "learning in public"]
 
 Over the past few days, I have been trying to write down everything that I have been learning. I hope that this way I can better appreciate my progress. I am prone to taking it for granted. Just a month ago I had no idea what some of the technologies I use these days were.
 
-## OOP
+## Object-oriented programming
 
-Object-oriented programming was the main item on my list for a long time. Last week I got round to brushing up on my OOP knowlede. Unfortunately, it is not immediately applicable to my projects now, but it is still a crucial skill for any developer. A boring list of what I leaned: constructors, creating prototype objects, setting constructor properties, inheritance, resetting inherited properties, mixins, etc.
+OOP programming was the main item on my list for a long time. Last week I got round to brushing up on my OOP knowlede. Unfortunately, it is not immediately applicable to my projects now, but it is still a crucial skill for any developer. A boring list of what I learned: constructors, creating prototype objects, setting constructor properties, inheritance, resetting inherited properties, mixins, etc.
 
 I am sure that whoever is reading this will know all of those things about OOP.
 
