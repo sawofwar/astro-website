@@ -5,6 +5,9 @@ const pageTitle = "Home Page";
 //  ⭐⭐⭐ The second button works because the client:load directive tells Astro to send and rerun its JavaScript to the client when the page loads, making the component interactive. We call this a hydrated component.
 
 //  ⭐⭐⭐ The component with the client:load directive will rerender after the page is loaded, and any interactive elements that it has will work.
+
+const allPosts = await Astro.glob("../pages/posts/*.md");
+const latestPost = allPosts.at(-1);
 ---
 
 <!-- ⭐⭐⭐ passing title to layout component using component attribute -->
@@ -14,7 +17,7 @@ const pageTitle = "Home Page";
 
   <p>
     Feel free to take a look at my latest <a
-      href="../posts/post-5"
+      href={latestPost.url}
       class="blog-link">blog post</a
     > :)
   </p>
